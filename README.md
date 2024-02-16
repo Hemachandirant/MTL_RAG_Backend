@@ -30,14 +30,6 @@ python openvino-doc-specific-extractor.py
 	- You can generate the vector store with different chunk configurations by modifying the last few lines of Python code.
 	- You can modify the `.env` file to specify which vector store file to use in the client and server programs. 
 
-3. Download LLM models and convert them into OpenVINO IR models
-- `llm-model-downloader.py` will download 'dolly2-3b', 'llama2-7b-chat', and 'Intel/neural-chat-7b-v3-1' models as default.
-	- You can specify the LLM model to use by modifying `.env` file.
-- You need to have account and access token to download the 'llama2-7b-chat' model. Go to HuggingFace web site and register yourself to get the access token. Also, you need to request the access to the llama2 models at llama2 project page.
-- The downloader will generate FP16, INT8 and INT4 models by default. You can use one of them. Please modify `.env` file to specify which model of data type to use.
-```sh
-python llm-model-downloader.py
-```
 
 4. Run the demo
 - Run the server
@@ -45,16 +37,8 @@ python llm-model-downloader.py
 ```sh
 uvicorn openvino-rag-server:app --host 0.0.0.0
 ```
-- Run the client
-- Note: You can change the server URL (or IP address) and port number by editing `.env` file.
-```sh
-streamlit run openvino-rag-client.py
-``` 
-Note: You can start the server and client in arbitrary order.
 
-## Examples
-![pic1](./resources/screenshot1.png)
+
 
 ## Tested environment
 - OS: Windows 11
-- OpenVINO: OpenVINO 2023.2.0
