@@ -19,7 +19,7 @@ python -m spacy download en_core_web_sm
 ```
 
 
-1 . Generate vector store from the OpenVINO documents
+1 . Generate vector store from the legal documents
 - Run '`openvino-doc-specific-extractor.py`'.
 - The program will store the document object in a pickle file (`doc_obj.pickle`) and use it if it exists the next time.
 ```sh
