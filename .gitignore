@@ -1,0 +1,12 @@
+# Ignore Python cache folders
+__pycache__
+
+# Ignore the 'data' folder
+data/
+
+# Ignore the 'dolly-v2-3b' folder
+dolly-v2-3b/
+
+cache/
+
+resources/

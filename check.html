@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal_MTL Q&A Chatbot</title>
+</head>
+<body>
+
+<div id="chat-container">
+    <div id="messages-container"></div>
+    <input type="text" id="input-message" placeholder="Your input here.">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    const messagesContainer = document.getElementById('messages-container');
+    const inputMessage = document.getElementById('input-message');
+
+    function sendMessage() {
+        const userMessage = inputMessage.value;
+        appendMessage('user', userMessage);
+
+        // Make AJAX request to the server
+        const xhr = new XMLHttpRequest();
+        const serverUrl = 'http://0.0.0.0';
+        const serverPort = '8000';
+        xhr.open('GET', `http://${serverUrl}:${serverPort}/chatbot/1?query=${userMessage}`, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                appendMessage('assistant', response.response);
+            }
+        };
+        xhr.send();
+    }
+
+    function appendMessage(role, content) {
+        const messageElement = document.createElement('div');
+        messageElement.className = role;
+        messageElement.textContent = content;
+
+        messagesContainer.appendChild(messageElement);
+    }
+</script>
+
+</body>
+</html>
