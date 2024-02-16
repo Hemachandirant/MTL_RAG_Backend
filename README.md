@@ -1,4 +1,4 @@
-# Q&A Chatbot for OpenVINO web documentation by OpenVINO
+# MTL RAG Backend
 
 This is an example of an LLM based Q&A chatbot that can refer to external documents using RAG (Retrieval Augmented Genration) technique. The program uses OpenVINO as the inferencing acceleration library.
 
@@ -7,17 +7,6 @@ The program can answer your questions by referring the OpenVINO technical docume
 This program doesn't rely on any cloud services or webAPIs for inferencing. The program downloads all the data, including reference documents and DL models, and **can perform inference offline**. You don't need any cloud services once you prepare the data locally. 
 
 ## Programs / Files
-
-|#|Program/File|Description|
-|---|---|---|
-|1|`llm-model-downloader.py`|Download databrics/dolly-2 and meta-llama/llama2-7b-chat models, and convert them into OpenVINO IR models.|
-|2|`openvino-doc-specific-extractor.py`|Convert OpenVINO HTML documents into vector store (DB).<br>Reads HTML documents, extracts text, generates embeddings, and store it into vector store.<br>You need to download an archived (zipped) HTML document from OpenVINO document web site.|
-|3|`openvino-rag-server.py`|OpenVINO Q&A demo server|
-|4|`openvino-rag-client.py`|OpenVION Q&A demo client|
-|5|`.env`|Configurations (no secrets nor credentials ncluded. just a configuration file)|
-|6|`requirements.txt`|Python module requirements file|
-|7|`huggingface_login.py`|(optional) A Python script to login to HuggingFace hub.|
-
 ## How to run
 
 0. Install Python prerequisites
