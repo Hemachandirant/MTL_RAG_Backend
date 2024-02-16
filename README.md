@@ -1,12 +1,7 @@
 # MTL RAG Backend
 
-This is an example of an LLM based Q&A chatbot that can refer to external documents using RAG (Retrieval Augmented Genration) technique. The program uses OpenVINO as the inferencing acceleration library.
-
-The program can answer your questions by referring the OpenVINO technical documentation from the OpenVINO official web site.
-
 This program doesn't rely on any cloud services or webAPIs for inferencing. The program downloads all the data, including reference documents and DL models, and **can perform inference offline**. You don't need any cloud services once you prepare the data locally. 
 
-## Programs / Files
 ## How to run
 
 0. Install Python prerequisites
@@ -23,12 +18,8 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
-1. Downloading OpenVINO Documents
-- Go to [OpenVINO web document page](https://docs.openvino.ai/2023.2/get_started.html) and download the archived document file from 'Download Docs' link on the right.
-- https://docs.openvino.ai/2023.2/get_started.html
-- Extract the contents of downloaded zip file into '`openvino_html_doc`' folder
 
-2. Generate vector store from the OpenVINO documents
+1 . Generate vector store from the OpenVINO documents
 - Run '`openvino-doc-specific-extractor.py`'.
 - The program will store the document object in a pickle file (`doc_obj.pickle`) and use it if it exists the next time.
 ```sh
