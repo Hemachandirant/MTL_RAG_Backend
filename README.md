@@ -35,7 +35,8 @@ python openvino-doc-specific-extractor.py
 - Run the server
 - Note: The '`--host 0.0.0.0`' option is to accept external connection. '`--port xx`' option is also available.
 ```sh
-uvicorn openvino-rag-server:app --host 0.0.0.0
+uvicorn openvino-rag-server:app --host 0.0.0.0 --port 8080
+uvicorn summary_server:app --host 0.0.0.0 --port 4000 --reload
 ```
 
 
