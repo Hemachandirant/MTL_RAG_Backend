@@ -23,7 +23,7 @@ origins = [
 
 app.add_middleware(  
     CORSMiddleware,  
-    allow_origins=origins,  
+    allow_origins=['*'],  
     allow_credentials=True,  
     allow_methods=["*"],  
     allow_headers=["*"],  
@@ -57,6 +57,7 @@ async def summary(file: UploadFile = File(...)):
   
     final_summary = " ".join(summaries)  
     logging.debug(final_summary)  
+    #bullet_points = [f ' ']
     return final_summary  
 
 
