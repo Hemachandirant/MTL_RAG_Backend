@@ -139,7 +139,7 @@ origins = [
   
 app.add_middleware(  
     CORSMiddleware,  
-    allow_origins=origins,  
+    allow_origins=['*'],  
     allow_credentials=True,  
     allow_methods=["*"],  
     allow_headers=["*"],  
@@ -153,10 +153,10 @@ llm = HuggingFacePipeline(pipeline=pipe)
 
 
 @app.post("/apiCaseId")
-async def case_processing(caseId: CaseId):
+async def case_processing(caseId:str):
     # data = await request.json()
     # caseId = data.get("caseId")
-    caseId = caseId.caseId
+    #caseId = caseId.caseId
 
     filename = caseId + ".pdf"
     folder_name = r"C:\Users\hemac\Desktop\RAG\GGUF_RAG\Intel_RAG_Openvino\openvino-llm-chatbot-rag\data"
@@ -206,12 +206,12 @@ async def case_processing(caseId: CaseId):
     return JSONResponse(content={"result": "Vector Datastore Created Successfully"})
 
 @app.post('/apiQuery')
-async def root(query: Query):
+async def root(caseId:str, query:str):
     # data = await request.json()
     # caseId = data.get("caseId")
     # query = data.get("query")
-    caseId = query.caseId
-    query = query.query
+    # caseId = query.caseId
+    # query = query.query
     if query:
 
         vectorstore_dir =f"stores/{caseId}"
@@ -256,6 +256,7 @@ async def root(query: Query):
         wc = len(ans.split())            # simple word count
         process_time = etime - stime
         words_per_sec = wc / process_time
+        logging.debug(f'Word count: {wc}, Processing Time: {process_time:6.1f} sec, {words_per_sec:6.2} words/sec')
         return {'response': ans}
     return {'response': ''}
 
